@@ -20,12 +20,15 @@ class ToDoList {
       return listItem.status === false;
    })
   }
-  changeStatus(id) {
-    let result = this.todos.find(function(task) {
-      return task.id === id;
-    })
-    result.status = !result.status;
-  }
+  changeStatus(id, status) {
+    return this.todos.map(function(listItem){
+      if (listItem.id === id) {                
+        listItem.status = status;
+      } else {                
+        return listItem;
+      };
+    });
+};
   findTask (text) { 
     return this.todos.filter(function(todo) {
       return todo.task.includes(text);
